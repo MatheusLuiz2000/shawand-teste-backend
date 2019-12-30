@@ -1,0 +1,51 @@
+{
+  "name": "service-pattern",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon src/server.ts",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://nicholas-ferreira-gcb@bitbucket.org/grupo_gcb/service-pattern.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/grupo_gcb/service-pattern#readme",
+  "dependencies": {
+    "aws-sdk": "^2.596.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "jest": "^24.9.0",
+    "moment": "^2.24.0",
+    "passport": "^0.4.1",
+    "passport-http-bearer": "^1.0.1",
+    "pg": "^7.17.0",
+    "sequelize": "^5.21.3",
+    "typescript": "^3.7.4",
+    "yup": "^0.28.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "@types/node": "^13.1.1",
+    "@types/passport-http-bearer": "^1.0.34",
+    "@types/sequelize": "^4.28.8",
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "@typescript-eslint/parser": "^2.13.0",
+    "apidocs": "^2017.3.9",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1",
+    "sequelize-cli": "^5.5.1",
+    "sucrase": "^3.11.0"
+  }
+}

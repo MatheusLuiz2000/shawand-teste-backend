@@ -10,6 +10,11 @@
 | TDD (testes)   | Jest, Super Teste             |
 
 ---
+### Bibliotecas Usadas
+- Estrutural
+    - **REST** - Representational State Transfer, e tem como objetivo primário a definição de características fundamentais para a construção de aplicações Web seguindo boas práticas.
+    - **Express** - Representational State Transfer, e tem como objetivo primário a definição de características fundamentais para a construção de aplicações Web seguindo boas práticas.
+---
 
 ### Estrutura de Arquivos
 
@@ -36,7 +41,7 @@ service-pattern
 │   │   └── log.js
 │   ├── lib/
 ├── testes/
-├── docs/
+├── apidocs/
 ├── .env
 ├── .editorconfig
 ├── .eslintrc.js
