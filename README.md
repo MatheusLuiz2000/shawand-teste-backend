@@ -23,6 +23,8 @@ A estrutura de arquivos está da seguinte maneira:
 ```bash
 service-pattern
 ├── src/
+│   ├── server.js
+│   ├── routes.js
 │   ├── app/
 │   │   └── controllers/
 │   │   └── models/
@@ -34,7 +36,6 @@ service-pattern
 │   │   └── database.js
 │   │   └── middlewares.js
 │   │   └── passsport.js
-│   │   └── routes.js
 │   ├── database/
 │   │   └── index.js
 │   │   └── migrations/
@@ -62,6 +63,8 @@ service-pattern
 Nesta seção haverão instruções caso você queira editar o template, explicando para que os diretórios são utilizados e também os arquivos de configuração.
 
 - **src** - Diretório contendo todos os arquivos da aplicação, é criado um diretório `src` para que o código da aplicação possa ser isolado em um diretório e facilmente portado para outros projetos, se necessário;
+  - **server.js** - Arquivo com a configuraçāo das rotas do sistema;
+  - **routes.js** - Arquivo com a configuraçāo das rotas do sistema;
 
   - **app** - Diretório para guardar os arquivos;
     - **controllers** - O responsável por receber todas as requisições do usuário;
@@ -73,7 +76,6 @@ Nesta seção haverão instruções caso você queira editar o template, explica
     - **database.js** - Arquivo com a configuraçāo do banco de dados;
     - **middlewares.js** - Arquivo com a configuraçāo dos middlewares globais da aplicação;
     - **passsport.js** - Arquivo com a configuraçāo de autenticaçāo da aplicação;
-    - **routes.js** - Arquivo com a configuraçāo das rotas do sistema;
 
   - **services** - Diretório para guardar os arquivos para comunicaçāo com outras apis;
     - **log.js** - Arquivo com a comunicaçāo/configuraçāo do serviço de log;
