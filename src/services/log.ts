@@ -13,7 +13,7 @@ const sqs = new AWS.SQS({ apiVersion: '2012-11-05' });
       "email": opcional
       } */
 class Log {
-  private get endpoint(): String {
+  private endpoint(): String {
     const { NODE_ENV } = process.env;
     let endpoint: String;
     switch (NODE_ENV) {
