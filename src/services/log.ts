@@ -13,6 +13,23 @@ const sqs = new AWS.SQS({ apiVersion: '2012-11-05' });
       "email": opcional
       } */
 class Log {
+  private get endpoint(): String {
+    const { NODE_ENV } = process.env;
+    let endpoint: String;
+    switch (NODE_ENV) {
+      case 'master':
+        endpoint = '';
+        break;
+      case 'develop':
+        endpoint = 'https://sqs.sa-east-1.amazonaws.com/544005205437/logs.fifo';
+        break;
+      default:
+        endpoint = '';
+        break;
+    }
+    return endpoint;
+  }
+
   public async enviar(obj) {
     const { NOME_SERVICO } = process.env;
     // Coloque aqui o nome do Sistema
@@ -58,7 +75,7 @@ class Log {
       MessageDeduplicationId: secret,
       MessageGroupId: secret + 1,
       // Url da QUEUE
-      QueueUrl: 'https://sqs.sa-east-1.amazonaws.com/544005205437/logs.fifo'
+      QueueUrl: this.endpoint()
     };
 
     // Envia o Log.
