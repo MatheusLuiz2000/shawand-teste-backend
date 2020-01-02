@@ -1,7 +1,7 @@
 import express from 'express';
 
 import Middlewares from './config/middlewares';
-import Routes from './config/routes';
+import Routes from './routes';
 import Database from './database';
 
 import Log from './services/log';
