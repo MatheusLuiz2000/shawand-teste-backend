@@ -17,7 +17,7 @@ class Server {
   constructor() {
     this.app = express();
 
-    Database.mysql();
+    Database.SQL();
     Middlewares(this.app);
     Routes(this.app);
 
