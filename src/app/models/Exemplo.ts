@@ -13,7 +13,10 @@ class User extends Model {
         provider: Sequelize.BOOLEAN
       },
       {
-        sequelize
+        sequelize,
+        tableName: 'tb_user',
+        createdAt: 'criado_em',
+        updatedAt: 'atualizado_em'
       }
     );
 
