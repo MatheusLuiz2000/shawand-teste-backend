@@ -1,6 +1,6 @@
 import Exemplo from '../app/models/Exemplo';
 
-import mysqlConfig from '../config/database';
+import SQLConfig from '../config/database';
 // import mongoose from 'mongoose';
 
 const Sequelize = require('sequelize');
@@ -10,22 +10,22 @@ const models = [Exemplo];
 class Database {
   connection;
 
-  mongoConnection;
+  NOSQLConnection;
 
   constructor() {
-    this.mysql();
-    // this.mongo();
+    this.SQL();
+    // this.NOSQL();
   }
 
-  mysql() {
-    this.connection = new Sequelize(mysqlConfig);
+  SQL() {
+    this.connection = new Sequelize(SQLConfig);
 
     models
       .map(model => model.init(this.connection))
       .map(model => model.associate && model.associate(this.connection.models));
   }
 
-  // mongo() {
+  // NOSQL() {
   //   this.mongoConnection = mongoose.connect(process.env.MONGO_URL, {
   //     useNewUrlParser: true,
   //     useFindAndModify: true,
