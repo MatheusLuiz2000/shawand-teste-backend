@@ -1,0 +1,1 @@
+Os validadores servem para validar os dados antes de chegar ao controller

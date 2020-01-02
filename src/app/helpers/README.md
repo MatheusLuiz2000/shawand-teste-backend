@@ -1,0 +1,1 @@
+Os auxiliares são apenas pequenas funções que ajudam a evitar códigos repetitivos e a produzir resultados padrão;
