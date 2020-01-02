@@ -2,7 +2,7 @@ import Sequelize from 'sequelize';
 
 const { Model } = require('sequelize');
 
-class User extends Model {
+class Usuario extends Model {
   static init(sequelize) {
     super.init(
       {
@@ -14,7 +14,7 @@ class User extends Model {
       },
       {
         sequelize,
-        tableName: 'tb_user',
+        tableName: 'tb_usuario',
         createdAt: 'criado_em',
         updatedAt: 'atualizado_em'
       }
@@ -24,4 +24,4 @@ class User extends Model {
   }
 }
 
-export default User;
+export default Usuario;
