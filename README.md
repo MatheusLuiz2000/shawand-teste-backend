@@ -28,6 +28,8 @@ service-pattern
 │   │   └── models/
 │   │   └── squemas/
 │   │   └── helpers/
+│   │   └── docs/
+│   │   └── validators/
 │   ├── config/
 │   │   └── database.js
 │   │   └── middlewares.js
@@ -40,7 +42,7 @@ service-pattern
 │   ├── services/
 │   │   └── log.js
 │   ├── lib/
-├── testes/
+├── __tests__
 ├── apidocs/
 ├── .env
 ├── .editorconfig
@@ -78,7 +80,7 @@ Nesta seção haverão instruções caso você queira editar o template, explica
 
   - **lib** - Bibliotecas contêm classes, podem incluir arquivos diferentes;
 
-- **testes** - Pasta onde fica os teste automaticos da aplicaçāo via jest;
+- **\_\_tests\_\_** - Pasta onde fica os teste automaticos da aplicaçāo via jest;
 - **docs** - Pasta pode fica os arquivos da documentaçāo;
 
 - **.env** - O armazenamento da configuração no ambiente separado do código.
