@@ -1,7 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import { Request, Response } from 'express';
+import path from 'path';
 
 class Welcome {
+  docs = (req, res) => {
+    res.sendFile(path.resolve('./apidoc/index.html'));
+  };
+
   hello = async (req: Request, res: Response) => {
     const rnd = Math.round(Math.random() * 10);
 

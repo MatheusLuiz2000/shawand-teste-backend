@@ -1,5 +1,8 @@
 node_modules
+apidoc
+
 .env
+
 yarn.lock
 
 *-lock.json

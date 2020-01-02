@@ -1,12 +1,13 @@
 // eslint-disable-next-line no-unused-vars
 import express, { Router } from 'express';
 
-import Welcome from '../app/controllers/welcome';
+import defaultController from '../app/controllers/defaultController';
 
 const Routes = (app: express.Application) => {
   const routes = Router();
 
-  routes.get('/', Welcome.hello);
+  routes.get('/', defaultController.docs);
+  routes.get('/hello', defaultController.hello);
 
   app.use(routes);
 };
