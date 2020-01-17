@@ -13,8 +13,12 @@ class Welcome {
     // Retorna uma resposta para a requisição
     if (rnd > 5) return res.status(200).json({ msg: 'Hello World' });
 
-    // Simula um erro durante a requisição
+    // Simula um  erro durante a requisição
     throw new Error('Simulação de erro');
+  };
+
+  health = (req, res) => {
+    res.status(200).send('OK');
   };
 }
 

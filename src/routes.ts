@@ -6,8 +6,8 @@ import defaultController from './app/controllers/defaultController';
 const Routes = (app: express.Application) => {
   const routes = Router();
 
-  routes.get('/', defaultController.docs);
-  routes.get('/hello', defaultController.hello);
+  routes.get('/', defaultController.docs); // Rota para a documentação
+  routes.get('/health', defaultController.health); // Rota para o health check
 
   app.use(routes);
 };

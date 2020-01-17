@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon src/server.ts",
-    "apidoc": "apidoc -i src/app/apidocs -o apidoc/",
-    "test": "jest",
-    "deploy": "yarn test apidoc"
+    "docs": "apidoc -i src/app/docs -o apidoc/",
+    "test": "yarn jest",
+    "deploy": "yarn test && yarn docs"
   },
   "repository": {
     "type": "git",
