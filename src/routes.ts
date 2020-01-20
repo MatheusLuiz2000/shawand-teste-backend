@@ -8,6 +8,7 @@ const Routes = (app: express.Application) => {
 
   routes.get('/', defaultController.docs); // Rota para a documentação
   routes.get('/health', defaultController.health); // Rota para o health check
+  routes.get('/testes', defaultController.testes); // Rota para o health check
 
   app.use(routes);
 };

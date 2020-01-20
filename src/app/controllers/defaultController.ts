@@ -7,6 +7,10 @@ class Welcome {
     res.sendFile(path.resolve('./apidoc/index.html'));
   };
 
+  testes = (req, res) => {
+    res.sendFile(path.resolve('./__tests__/coverage/lcov-report/index.html'));
+  };
+
   hello = async (req: Request, res: Response) => {
     const rnd = Math.round(Math.random() * 10);
 

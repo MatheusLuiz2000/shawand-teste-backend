@@ -1,13 +1,12 @@
+import './bootstrap';
 import express from 'express';
+import 'express-async-errors';
 
 import Middlewares from './config/middlewares';
 import Routes from './routes';
 import Database from './database';
 
 import Log from './services/log';
-
-import 'express-async-errors';
-import 'dotenv/config';
 
 const { NOME_SERVICO, PORT } = process.env;
 
