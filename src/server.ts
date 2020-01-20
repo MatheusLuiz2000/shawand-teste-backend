@@ -25,7 +25,7 @@ class Server {
   }
 
   private handleErros() {
-    this.app.use(async (err: express.Errback, req, res, next) => {
+    this.app.use(async (err: any, req, res, next) => {
       Log.enviar({
         nivel: 'erro',
         mensagem: 'Error',

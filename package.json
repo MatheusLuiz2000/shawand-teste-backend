@@ -7,7 +7,8 @@
     "dev": "nodemon src/server.ts",
     "docs": "apidoc -i src/app/docs -o apidoc/",
     "test": "yarn jest",
-    "deploy": "yarn test && yarn docs"
+    "start": "pm2 start ./node_modules/sucrase/bin/sucrase-node --name  -- ./src/server.ts --watch",
+    "deploy": "yarn test && yarn docs && yarn start"
   },
   "repository": {
     "type": "git",
