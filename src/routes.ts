@@ -3,14 +3,10 @@ import express, { Router } from 'express';
 
 import defaultController from './app/controllers/defaultController';
 
-const Routes = (app: express.Application) => {
-  const routes = Router();
+const routes = new Router();
 
-  routes.get('/', defaultController.docs); // Rota para a documentação
-  routes.get('/health', defaultController.health); // Rota para o health check
-  routes.get('/testes', defaultController.testes); // Rota para o health check
+routes.get('/', defaultController.docs); // Rota para a documentação
+routes.get('/health', defaultController.health); // Rota para o health check
+routes.get('/testes', defaultController.testes); // Rota para o health check
 
-  app.use(routes);
-};
-
-export default Routes;
+export default routes;

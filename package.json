@@ -1,21 +1,21 @@
 {
   "name": "service-pattern",
-  "version": "1.0.0",
+  "version": "1.0.1-0",
   "description": "",
   "main": "server.js",
   "husky": {
     "hooks": {
-      "pre-commit": "cross-env yarn test --bail git add ."
+      "pre-commit": "yarn test && yarn version --prepatch --no-git-tag-version && git add ."
     }
   },
   "scripts": {
-    "dev": "nodemon src/server.ts",
-    "docs": "apidoc -i src/app/docs -o apidoc/",
-    "pretest": "cross-env set NODE_ENV=test sequelize db:migrate",
-    "test": "jest --forceExit",
-    "posttest": "cross-env NODE_ENV=test sequelize db:migrate:undo:all",
-    "start": "pm2 start ./node_modules/sucrase/bin/sucrase-node --name  -- ./src/server.ts --watch",
-    "deploy": "yarn test && yarn docs && yarn start"
+    "dev": "nodemon src/server.ts ",
+    "docs": "apidoc -i src/app/docs -o apidoc/ ",
+    "deploy": "sequelize db:migrate && npm run start",
+    "pretest": "cross-env NODE_ENV=test sequelize db:migrate",
+    "test": " jest --forceExit --bail --runInBand --detectOpenHandles",
+    "posttest": "cross-env NODE_ENV=test sequelize db:migrate:undo:all ",
+    "start": " pm2-runtime start ./node_modules/sucrase/bin/sucrase-node --name api -- ./src/server.ts -i --watch "
   },
   "repository": {
     "type": "git",
@@ -36,12 +36,14 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "log-gcb": "^1.0.8",
     "moment": "^2.24.0",
     "passport": "^0.4.1",
     "passport-http-bearer": "^1.0.1",
     "pg": "^7.17.0",
     "sequelize": "^5.21.3",
     "typescript": "^3.7.4",
+    "youch": "^2.0.10",
     "yup": "^0.28.0"
   },
   "devDependencies": {
