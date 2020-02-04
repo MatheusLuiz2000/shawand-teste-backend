@@ -40,7 +40,7 @@ module.exports = {
     }],
     "prefer-const": 0,
     "no-var": 2,
-    "no-unused-vars": ["error", { "argsIgnorePattern": "Request" }]
+    "no-unused-vars": ["error", { "argsIgnorePattern": "next" }]
   }
   }
 

@@ -10,6 +10,7 @@ const Middlewares = (app: express.Application) => {
   app.use(cors({ origin: '*' }));
   // app.use(passport.authenticate());
   app.use(express.static(path.resolve('./apidoc')));
+  app.use(express.static(path.resolve('./__tests__/coverage/lcov-report')));
 };
 
 export default Middlewares;
