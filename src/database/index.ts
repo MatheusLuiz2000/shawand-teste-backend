@@ -1,6 +1,6 @@
+import mongoose from 'mongoose';
 import Exemplo from '../app/models/Exemplo';
 import SQLConfig from '../config/database';
-import mongoose from 'mongoose';
 
 const Sequelize = require('sequelize');
 
@@ -12,7 +12,7 @@ class Database {
   NOSQLConnection;
 
   constructor() {
-    this.SQL();
+    // this.SQL();
     this.NOSQL();
   }
 

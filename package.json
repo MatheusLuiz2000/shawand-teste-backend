@@ -1,6 +1,6 @@
 {
   "name": "service-pattern",
-  "version": "1.0.6-0",
+  "version": "1.0.7-0",
   "description": "",
   "main": "server.js",
   "husky": {
@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "nodemon src/server.ts ",
     "docs": "apidoc -i src/app/docs -o apidoc/ ",
-    "deploy": "sequelize db:migrate && npm run start",
+    "deploy": "npm run start",
     "pretest": "cross-env NODE_ENV=test sequelize db:migrate",
     "test": " jest --forceExit --bail --runInBand --detectOpenHandles",
     "posttest": "cross-env NODE_ENV=test sequelize db:migrate:undo:all ",
