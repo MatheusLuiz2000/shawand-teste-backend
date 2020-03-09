@@ -78,4 +78,4 @@ class Receita {
   };
 }
 
-export default new Receita();
+export default new Receita(); 
