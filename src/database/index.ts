@@ -1,7 +1,6 @@
 import Exemplo from '../app/models/Exemplo';
-
 import SQLConfig from '../config/database';
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 
 const Sequelize = require('sequelize');
 
@@ -14,7 +13,7 @@ class Database {
 
   constructor() {
     this.SQL();
-    // this.NOSQL();
+    this.NOSQL();
   }
 
   SQL() {
@@ -26,13 +25,13 @@ class Database {
     );
   }
 
-  // NOSQL() {
-  //   this.mongoConnection = mongoose.connect(process.env.MONGO_URL, {
-  //     useNewUrlParser: true,
-  //     useFindAndModify: true,
-  //     useUnifiedTopology: true
-  //   });
-  // }
+  NOSQL() {
+    this.NOSQLConnection = mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useFindAndModify: true,
+      useUnifiedTopology: true
+    });
+  }
 }
 
 export default new Database();

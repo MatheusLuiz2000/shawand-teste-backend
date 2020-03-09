@@ -22,7 +22,7 @@ class App {
     this.cors();
     this.middlewares();
     this.routes();
-    this.exceptionHandler();
+    // this.exceptionHandler();
   }
 
   logs() {

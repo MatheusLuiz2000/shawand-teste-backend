@@ -10,3 +10,4 @@ app.listen(PORT, () => {
     `** ${NOME_SERVICO} v${pacote.version} executando na porta ${PORT} **`
   );
 });
+ 
