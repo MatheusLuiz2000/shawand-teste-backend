@@ -4,9 +4,10 @@ export default {
   secretAccessKey: 'yYFIFGARZdr57yBv0kFGD2kbGnCsF4u2zq4DRG3R',
   nomeApi: 'adiante_cliente',
   filaDev: 'https://sqs.sa-east-1.amazonaws.com/544005205437/logs.fifo',
-  filaMaster: '',
+  filaMaster: 'https://sqs.sa-east-1.amazonaws.com/544005205437/logs-master.fifo',
   filaDevPrioridade:
     'https://sqs.sa-east-1.amazonaws.com/544005205437/logs-erro.fifo',
-  filaMasterPrioridade: '',
+  filaMasterPrioridade: 
+    'https://sqs.sa-east-1.amazonaws.com/544005205437/logs-master-prioridade.fifo',
   env: process.env.NODE_ENV
 };
