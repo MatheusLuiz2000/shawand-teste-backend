@@ -1,5 +1,6 @@
 import './bootstrap';
 
+import AWSXRay from 'aws-xray-sdk'
 import Youch from 'youch';
 import express from 'express';
 import 'express-async-errors';
@@ -34,7 +35,9 @@ class App {
   }
 
   routes() {
+    this.server.use(AWSXRay.express.openSegment('Receita'));
     this.server.use(routes);
+    this.server.use(AWSXRay.express.closeSegment());
   }
 
   cors() {
