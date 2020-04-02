@@ -1,7 +1,10 @@
 import './bootstrap';
 
 import AWSXRay from 'aws-xray-sdk'
-AWSXRay.captureHTTPs(require('http'));
+AWSXRay.captureHTTPsGlobal(require('http'), false);
+AWSXRay.captureHTTPsGlobal(require('https'), false);
+AWSXRay.capturePromise();
+
 import Youch from 'youch';
 import express from 'express';
 import 'express-async-errors';
