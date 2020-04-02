@@ -1,6 +1,7 @@
 import './bootstrap';
 
 import AWSXRay from 'aws-xray-sdk'
+AWSXRay.captureHTTPs(require('http'));
 import Youch from 'youch';
 import express from 'express';
 import 'express-async-errors';
@@ -35,6 +36,7 @@ class App {
   }
 
   routes() {
+    this.server.get('/health', (req, res) => res.status(200).send('OK'));
     this.server.use(AWSXRay.express.openSegment('Receita'));
     this.server.use(routes);
     this.server.use(AWSXRay.express.closeSegment());

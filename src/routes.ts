@@ -7,7 +7,6 @@ import ReceitaValidator from './app/validators/ReceitaValidator';
 const routes = new Router();
 
 // routes.get('/', ReceitaController.docs); // Rota para a documentação
-routes.get('/health', ReceitaController.health); // Rota para o health check
 routes.post('/consulta/:id', ReceitaController.consultaReceita); // Rota para o health check
 
 export default routes;
