@@ -8,7 +8,7 @@ const Receita = new mongoose.Schema(
     },
     json_receita: {
       type: Object
-    },
+    }
   },
   {
     timestamps: true

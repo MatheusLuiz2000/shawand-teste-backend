@@ -5,6 +5,7 @@ import receitalib from 'receitaws';
 import Log from 'log-gcb';
 import mongoose from 'mongoose';
 import ReceitaSchema from '../squemas/ReceitaSchema';
+import 'dotenv/config';
 
 class Receita {
   docs = (req, res) => {
@@ -35,7 +36,7 @@ class Receita {
     };
 
     const receita = receitalib(opt);
-    
+
     // faz a requisição
     receita(cnpj)
       .then(dados => {
@@ -47,11 +48,11 @@ class Receita {
         }
 
         if (dados.data.status === 'ERROR') {
-          Log.enviar({
-            nivel: `erro`,
-            mensagem: `Nao foi possivel localizar o cliente de cnpj ${cnpj}`,
-            detalhes: `${dados.data.message}`
-          });
+          Log.erro(
+            process.env.HEADERS_GLOBAIS,
+            `Nao foi possivel localizar o cliente de cnpj ${cnpj}`,
+            dados.data
+          );
 
           return res.status(404).json({
             mensagem: 'CNPJ não foi encontrado. Tenta novamente!'
@@ -66,12 +67,11 @@ class Receita {
         return res.status(200).json(dados.data);
       })
       .catch(err => {
-        console.error(err)
-        Log.enviar({
-          nivel: `erro`,
-          mensagem: `Nao foi possivel conectar com a api da receita`,
-          detalhes: `${err}`
-        });
+        Log.erro(
+          process.env.HEADERS_GLOBAIS,
+          `Nao foi possivel conectar com a api da receita`,
+          { erro: err }
+        );
 
         return res.status(400).json({
           mensagem: 'Não foi possível conectar com a API da Receita'
