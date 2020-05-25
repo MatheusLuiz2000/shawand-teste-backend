@@ -1,11 +1,9 @@
-// eslint-disable-next-line no-unused-vars
 import { Request, Response } from 'express';
 import path from 'path';
 import receitalib from 'receitaws';
 import Log from 'log-gcb';
-import mongoose from 'mongoose';
-import ReceitaSchema from '../squemas/ReceitaSchema';
 import 'dotenv/config';
+import Consulta from '../models/Consulta';
 
 class Receita {
   docs = (req, res) => {
@@ -23,24 +21,18 @@ class Receita {
   consultaReceita = async (req, res) => {
     let { cnpj } = req.body;
     const { id } = req.params;
+
     cnpj = cnpj.replace(/[^\w\s]/gi, '');
 
-    const ReceitaAnaliseModel = mongoose.model(
-      'receita',
-      ReceitaSchema,
-      'receita'
-    );
-
     const opt = {
-      timeout: 2000
+      timeout: 3000,
+      token: 'ac4c6cd88befb569350b22b3112ef27f48e732f101cd2c14e0bf8b26e9dd6b8c'
     };
 
     const receita = receitalib(opt);
 
-    // faz a requisição
-    receita(cnpj)
+    receita(cnpj, 180)
       .then(dados => {
-        console.log(dados);
         if (dados.status !== 200) {
           return res.status(400).json({
             mensagem: 'Algo deu errado! Tente novamente'
@@ -59,9 +51,11 @@ class Receita {
           });
         }
 
-        ReceitaAnaliseModel.create({
-          cliente_id: id,
-          json_receita: dados.data
+        Consulta.create({
+          documento: cnpj,
+          dados: dados.data,
+          documento_valido: true,
+          atividade_principal: null
         });
 
         return res.status(200).json(dados.data);

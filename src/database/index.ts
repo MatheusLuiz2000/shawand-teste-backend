@@ -1,19 +1,16 @@
-import mongoose from 'mongoose';
-import Exemplo from '../app/models/Exemplo';
 import SQLConfig from '../config/database';
+
+import Consulta from '../app/models/Consulta';
 
 const Sequelize = require('sequelize');
 
-const models = [Exemplo];
+const models = [Consulta];
 
 class Database {
   connection;
 
-  NOSQLConnection;
-
   constructor() {
-    // this.SQL();
-    this.NOSQL();
+    this.SQL();
   }
 
   SQL() {
@@ -23,14 +20,6 @@ class Database {
     models.map(
       model => model.associate && model.associate(this.connection.models)
     );
-  }
-
-  NOSQL() {
-    this.NOSQLConnection = mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useFindAndModify: true,
-      useUnifiedTopology: true
-    });
   }
 }
 

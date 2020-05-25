@@ -1,9 +1,6 @@
 import './bootstrap';
 
-import AWSXRay from 'aws-xray-sdk'
-AWSXRay.captureHTTPsGlobal(require('http'), false);
-AWSXRay.captureHTTPsGlobal(require('https'), false);
-AWSXRay.capturePromise();
+import AWSXRay from 'aws-xray-sdk';
 
 import Youch from 'youch';
 import express from 'express';
@@ -16,6 +13,11 @@ import logConfig from './config/logConfig';
 import routes from './routes';
 
 import './database';
+
+// AWSXRay.captureHTTPsGlobal(require('http'), false);
+// AWSXRay.captureHTTPsGlobal(require('https'), false);
+
+// AWSXRay.capturePromise();
 
 class App {
   server: express.Application;
@@ -40,9 +42,9 @@ class App {
 
   routes() {
     this.server.get('/health', (req, res) => res.status(200).send('OK'));
-    this.server.use(AWSXRay.express.openSegment('Receita'));
+    // this.server.use(AWSXRay.express.openSegment('Receita'));
     this.server.use(routes);
-    this.server.use(AWSXRay.express.closeSegment());
+    // this.server.use(AWSXRay.express.closeSegment());
   }
 
   cors() {
