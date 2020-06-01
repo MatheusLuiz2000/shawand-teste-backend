@@ -1,6 +1,6 @@
 {
   "name": "service-pattern",
-  "version": "1.0.20-0",
+  "version": "1.0.21-0",
   "description": "",
   "main": "server.js",
   "husky": {
@@ -11,9 +11,9 @@
   "scripts": {
     "dev": "nodemon src/server.ts ",
     "docs": "apidoc -i src/app/docs -o apidoc/ ",
-    "deploy": "npm run start",
+    "deploy": "sequelize db:migrate && npm run start",
     "pretest": "cross-env NODE_ENV=test sequelize db:migrate",
-    "test": " jest --forceExit --bail --runInBand --detectOpenHandles",
+    "test": " jest --forceExit --bail --runInBand",
     "posttest": "cross-env NODE_ENV=test sequelize db:migrate:undo:all ",
     "start": " pm2-runtime start ./node_modules/sucrase/bin/sucrase-node --name api -- ./src/server.ts -i --watch "
   },
