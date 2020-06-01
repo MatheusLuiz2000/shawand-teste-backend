@@ -7,7 +7,15 @@ class Consulta extends Model {
     super.init(
       {
         documento: Sequelize.STRING,
-        dados: Sequelize.JSON,
+        dados: {
+          type: Sequelize.TEXT,
+          get() {
+            return JSON.parse(this.getDataValue('atividade_principal'));
+          },
+          set(value) {
+            this.setDataValue('log', JSON.stringify(value));
+          }
+        },
         atividade_principal: Sequelize.STRING(255),
         documento_valido: Sequelize.BOOLEAN,
         desativado_em: Sequelize.DATE

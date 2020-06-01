@@ -12,7 +12,7 @@ module.exports = {
         allowNull: true
       },
       dados: {
-        type: Sequelize.JSON,
+        type: Sequelize.TEXT,
         allowNull: true
       },
       documento_valido: {
