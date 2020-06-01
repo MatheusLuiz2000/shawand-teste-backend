@@ -10,10 +10,10 @@ class Consulta extends Model {
         dados: {
           type: Sequelize.TEXT,
           get() {
-            return JSON.parse(this.getDataValue('atividade_principal'));
+            return JSON.parse(this.getDataValue('dados'));
           },
           set(value) {
-            this.setDataValue('log', JSON.stringify(value));
+            this.setDataValue('dados', JSON.stringify(value));
           }
         },
         atividade_principal: Sequelize.STRING(255),
