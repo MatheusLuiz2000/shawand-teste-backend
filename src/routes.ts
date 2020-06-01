@@ -5,7 +5,7 @@ import ReceitaController from './app/controllers/ReceitaController';
 import ReceitaValidator from './app/validators/ReceitaValidator';
 
 const routes = new Router();
-
+// teste
 // routes.get('/', ReceitaController.docs); // Rota para a documentação
 routes.get('/:documento', ReceitaController.listar);
 routes.post('/consulta', ReceitaController.consultaReceita);
