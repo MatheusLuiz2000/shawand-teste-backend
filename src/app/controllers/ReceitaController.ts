@@ -36,11 +36,60 @@ class Receita {
       }
     });
 
-    if (dados.length <= 0) {
-      return res.status(204).json();
+    if (!dados) {
+      const opt = {
+        timeout: 3000,
+        token:
+          'ac4c6cd88befb569350b22b3112ef27f48e732f101cd2c14e0bf8b26e9dd6b8c'
+      };
+
+      const receita = receitalib(opt);
+
+      receita(documento, 180)
+        .then(async dados => {
+          if (dados.status !== 200) {
+            return res.status(400).json({
+              mensagem: 'Algo deu errado! Tente novamente'
+            });
+          }
+
+          if (dados.data.status === 'ERROR') {
+            Log.erro(
+              process.env.HEADERS_GLOBAIS,
+              `Nao foi possivel localizar o cliente de documento ${documento}`,
+              dados.data
+            );
+
+            return res.status(404).json({
+              mensagem: 'documento não foi encontrado. Tente novamente!'
+            });
+          }
+
+          const atividade_principal = dados.data.atividade_principal[0].code;
+
+          await Consulta.create({
+            documento,
+            dados: dados.data,
+            documento_valido: true,
+            atividade_principal: atividade_principal || null
+          });
+
+          return res.status(200).json(dados.data);
+        })
+        .catch(err => {
+          Log.erro(
+            process.env.HEADERS_GLOBAIS,
+            `Nao foi possivel conectar com a api da receita`,
+            { erro: err }
+          );
+
+          return res.status(400).json({
+            mensagem: 'Não foi possível conectar com a API da Receita'
+          });
+        });
     }
 
-    return res.status(200).json(dados);
+    return res.status(200).json(dados.dados);
   };
 
   consultaReceita = async (req, res) => {

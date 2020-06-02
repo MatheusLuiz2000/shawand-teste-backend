@@ -1,19 +1,16 @@
 import pacote from '../../package.json';
-import 'dotenv/config';
 
 export default {
-  aws_region: 'sa-east-1',
-  aws_access_key_id: 'AKIAX5KJ4VW6WUNTQA6S',
-  aws_secret_key_id: 'yYFIFGARZdr57yBv0kFGD2kbGnCsF4u2zq4DRG3R',
-  nome_api: 'adiante-cliente',
+  aws_region: process.env.AWS_REGION,
+  aws_access_key_id: process.env.AWS_ACCESS_KEY_ID,
+  aws_secret_key_id: process.env.AWS_SECRET_ACCESS_KEY,
+  nome_api: 'adiante-receita',
   fila_sqs_develop:
     'https://sqs.sa-east-1.amazonaws.com/544005205437/logs.fifo',
-  fila_sqs_master:
-    'https://sqs.sa-east-1.amazonaws.com/544005205437/logs-master.fifo',
+  fila_sqs_master: process.env.SQS_QUEUE,
   fila_sqs_develop_prioridade:
     'https://sqs.sa-east-1.amazonaws.com/544005205437/logs-erro.fifo',
-  fila_sqs_master_prioridade:
-    'https://sqs.sa-east-1.amazonaws.com/544005205437/logs-master-prioridade.fifo',
+  fila_sqs_master_prioridade: process.env.SQS_PRIORITY_QUEUE,
   ambiente: process.env.NODE_ENV ? process.env.NODE_ENV : 'sem informacoes',
   versao: pacote.version ? pacote.version : 'sem informacoes',
   forcarLog: true
