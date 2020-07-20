@@ -36,6 +36,8 @@ class Receita {
       }
     });
 
+    console.log('dados linha 39 ', dados)
+
     if (!dados) {
       const opt = {
         timeout: 3000,
@@ -45,19 +47,20 @@ class Receita {
 
       const receita = receitalib(opt);
 
-      receita(documento, 180)
-        .then(async dados => {
-          if (dados.status !== 200) {
+      const resposta = await receita(documento, 180)
+        
+          console.log('no  ', resposta)
+          if (resposta.status !== 200) {
             return res.status(400).json({
               mensagem: 'Algo deu errado! Tente novamente'
             });
           }
 
-          if (dados.data.status === 'ERROR') {
+          if (resposta.data.status === 'ERROR') {
             Log.erro(
               process.env.HEADERS_GLOBAIS,
               `Nao foi possivel localizar o cliente de documento ${documento}`,
-              dados.data
+              resposta.data
             );
 
             return res.status(404).json({
@@ -65,17 +68,17 @@ class Receita {
             });
           }
 
-          const atividade_principal = dados.data.atividade_principal[0].code;
+          const atividade_principal = resposta.data.atividade_principal[0].code;
 
           await Consulta.create({
             documento,
-            dados: dados.data,
+            dados: resposta.data,
             documento_valido: true,
             atividade_principal: atividade_principal || null
           });
 
-          return res.status(200).json(dados.data);
-        })
+          return res.status(200).json(resposta.data);
+        )
         .catch(err => {
           Log.erro(
             process.env.HEADERS_GLOBAIS,
