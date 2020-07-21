@@ -36,7 +36,7 @@ class Receita {
       }
     });
 
-    console.log('dados linha 39 ', dados)
+    console.log('dados linha 39 ', dados);
 
     if (!dados) {
       const opt = {
@@ -47,49 +47,38 @@ class Receita {
 
       const receita = receitalib(opt);
 
-      const resposta = await receita(documento, 180)
-        
-          console.log('no  ', resposta)
-          if (resposta.status !== 200) {
-            return res.status(400).json({
-              mensagem: 'Algo deu errado! Tente novamente'
-            });
-          }
+      const resposta = await receita(documento, 180);
 
-          if (resposta.data.status === 'ERROR') {
-            Log.erro(
-              process.env.HEADERS_GLOBAIS,
-              `Nao foi possivel localizar o cliente de documento ${documento}`,
-              resposta.data
-            );
+      console.log('no  ', resposta);
 
-            return res.status(404).json({
-              mensagem: 'documento não foi encontrado. Tente novamente!'
-            });
-          }
-
-          const atividade_principal = resposta.data.atividade_principal[0].code;
-
-          await Consulta.create({
-            documento,
-            dados: resposta.data,
-            documento_valido: true,
-            atividade_principal: atividade_principal || null
-          });
-
-          return res.status(200).json(resposta.data);
-        )
-        .catch(err => {
-          Log.erro(
-            process.env.HEADERS_GLOBAIS,
-            `Nao foi possivel conectar com a api da receita`,
-            { erro: err }
-          );
-
-          return res.status(400).json({
-            mensagem: 'Não foi possível conectar com a API da Receita'
-          });
+      if (resposta.status !== 200) {
+        return res.status(400).json({
+          mensagem: 'Algo deu errado! Tente novamente'
         });
+      }
+
+      if (resposta.data.status === 'ERROR') {
+        Log.erro(
+          process.env.HEADERS_GLOBAIS,
+          `Nao foi possivel localizar o cliente de documento ${documento}`,
+          resposta.data
+        );
+
+        return res.status(404).json({
+          mensagem: 'documento não foi encontrado. Tente novamente!'
+        });
+      }
+
+      const atividade_principal = resposta.data.atividade_principal[0].code;
+
+      await Consulta.create({
+        documento,
+        dados: resposta.data,
+        documento_valido: true,
+        atividade_principal: atividade_principal || null
+      });
+
+      return res.status(200).json(resposta.data);
     }
 
     return res.status(200).json(dados.dados);
