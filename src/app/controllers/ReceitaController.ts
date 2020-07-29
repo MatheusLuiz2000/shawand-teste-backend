@@ -47,7 +47,7 @@ class Receita {
 
       const receita = receitalib(opt);
 
-      const resposta = await receita(documento, 180);
+      const resposta = await receita(documento, 0);
 
       console.log('no  ', resposta);
 
@@ -110,7 +110,7 @@ class Receita {
 
     const receita = receitalib(opt);
 
-    receita(cnpj, 180)
+    receita(cnpj, 0)
       .then(async dados => {
         if (dados.status !== 200) {
           return res.status(400).json({
