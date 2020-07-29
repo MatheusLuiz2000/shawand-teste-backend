@@ -144,11 +144,7 @@ class Receita {
         return res.status(200).json(dados.data);
       })
       .catch(err => {
-        Log.erro(
-          process.env.HEADERS_GLOBAIS,
-          `Nao foi possivel conectar com a api da receita`,
-          { erro: err }
-        );
+        console.log(err);
 
         return res.status(400).json({
           mensagem: 'Não foi possível conectar com a API da Receita'
