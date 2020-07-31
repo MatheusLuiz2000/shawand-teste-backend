@@ -144,7 +144,11 @@ class Receita {
         return res.status(200).json(dados.data);
       })
       .catch(err => {
-        console.log(err);
+        Log.erro(
+          process.env.HEADERS_GLOBAIS,
+          `Nao foi possivel localizar o cliente de cnpj ${cnpj} NA receita`,
+          err
+        );
 
         return res.status(400).json({
           mensagem: 'Não foi possível conectar com a API da Receita'
