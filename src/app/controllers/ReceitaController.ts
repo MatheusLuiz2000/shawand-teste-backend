@@ -40,7 +40,7 @@ class Receita {
 
     if (!dados) {
       const opt = {
-        timeout: 3000,
+        timeout: 6000,
         token:
           'ac4c6cd88befb569350b22b3112ef27f48e732f101cd2c14e0bf8b26e9dd6b8c'
       };
@@ -94,7 +94,7 @@ class Receita {
     cnpj = cnpj.replace(/[^\w\s]/gi, '');
 
     const opt = {
-      timeout: 3000,
+      timeout: 6000,
       token: 'ac4c6cd88befb569350b22b3112ef27f48e732f101cd2c14e0bf8b26e9dd6b8c'
     };
 
