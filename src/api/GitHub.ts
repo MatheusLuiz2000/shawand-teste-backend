@@ -4,7 +4,7 @@ class GitHub {
   token: string;
 
   constructor() {
-    this.token = 'a7ccfab4d7c0dc870b2ba007ba485aa301f244f3';
+    this.token = process.env.GITHUB_KEY;
   }
 
   public async getUsers(since) {
