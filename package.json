@@ -3,11 +3,8 @@
   "version": "1.0.36-0",
   "description": "",
   "main": "server.js",
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn version --prepatch --no-git-tag-version && git add ."
-    }
-  },
+  "outDir": "./dist",
+  "rootDir": "./",
   "scripts": {
     "dev": "nodemon src/server.ts ",
     "docs": "apidoc -i src/app/docs -o apidoc/ ",
@@ -15,7 +12,7 @@
     "pretest": "cross-env NODE_ENV=test",
     "test": " jest --forceExit --bail --runInBand",
     "posttest": "cross-env NODE_ENV=test sequelize db:migrate:undo:all ",
-    "start": "node build/server.js"
+    "start": "npm tsc && node dist/src/server.js"
   },
   "repository": {
     "type": "git",
@@ -47,6 +44,7 @@
     "passport-http-bearer": "^1.0.1",
     "pg": "^7.17.0",
     "sequelize": "^5.21.3",
+    "ts-node": "^9.1.1",
     "typescript": "^3.7.4",
     "youch": "^2.0.10",
     "yup": "^0.28.1"

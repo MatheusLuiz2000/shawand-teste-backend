@@ -2,7 +2,8 @@
 import express, { Router } from 'express';
 import GitHubController from './app/controllers/GitHubController';
 
-const routes = new Router();
+const routes = express.Router();
+
 // teste
 routes.get('/users', GitHubController.listUsers);
 routes.get('/users/:username/details', GitHubController.listUser);
