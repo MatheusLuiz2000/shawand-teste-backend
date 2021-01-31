@@ -1,1 +1,4 @@
-Os auxiliares são apenas pequenas funções que ajudam a evitar códigos repetitivos e a produzir resultados padrão;
+PUT this in  .ENV
+
+GITHUB_KEY = aea5e8ab781b761a3f68bdc653df4180b0cb2288
+URL = http://localhost:4040/
