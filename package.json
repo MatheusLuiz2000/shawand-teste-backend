@@ -1,6 +1,6 @@
 {
-  "name": "service-pattern",
-  "version": "1.0.30-0",
+  "name": "fullstacktest",
+  "version": "1.0.32-0",
   "description": "",
   "main": "server.js",
   "husky": {
@@ -12,48 +12,40 @@
     "dev": "nodemon src/server.ts ",
     "docs": "apidoc -i src/app/docs -o apidoc/ ",
     "deploy": "sequelize db:migrate && npm run start",
-    "pretest": "cross-env NODE_ENV=test sequelize db:migrate",
+    "pretest": "cross-env NODE_ENV=test",
     "test": " jest --forceExit --bail --runInBand",
     "posttest": "cross-env NODE_ENV=test sequelize db:migrate:undo:all ",
     "start": " pm2-runtime start ./node_modules/sucrase/bin/sucrase-node --name api -- ./src/server.ts -i --watch "
   },
   "repository": {
     "type": "git",
-    "url": "git+https://nicholas-ferreira-gcb@bitbucket.org/grupo_gcb/service-pattern.git"
+    "url": "git+https://matheusluiz1000@bitbucket.org/matheusluiz1000/fullstack-project-git.git"
   },
   "author": "",
   "apidoc": {
     "title": "API Docs",
-    "url": "https://bitbucket.org/grupo_gcb/service-pattern#readme"
+    "url": "https://matheusluiz1000@bitbucket.org/matheusluiz1000/fullstack-project-git.git#readme"
   },
   "license": "ISC",
-  "homepage": "https://bitbucket.org/grupo_gcb/service-pattern#readme",
+  "homepage": "https://matheusluiz1000@bitbucket.org/matheusluiz1000/fullstack-project-git.git#readme",
   "dependencies": {
     "aws-sdk": "^2.596.0",
     "aws-xray-sdk": "^2.5.0",
     "axios": "^0.19.0",
     "body-parser": "^1.19.0",
-    "cnpj": "^3.0.0",
     "cors": "^2.8.5",
-    "cpf-cnpj-validator": "^1.0.1",
-    "csv-parser": "^2.3.2",
     "dotenv": "^8.2.0",
+    "eslint-config-airbnb": "^18.2.1",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "i": "^0.3.6",
-    "line-by-line": "^0.1.6",
-    "line-reader": "^0.4.0",
-    "log-gcb": "^1.0.8",
     "moment": "^2.24.0",
     "mongoose": "^5.8.11",
     "mysql2": "^2.1.0",
-    "neat-csv": "^5.2.0",
-    "node-xlsx": "^0.15.0",
     "npm": "^6.14.5",
     "passport": "^0.4.1",
     "passport-http-bearer": "^1.0.1",
     "pg": "^7.17.0",
-    "receitaws": "^0.1.4",
     "sequelize": "^5.21.3",
     "typescript": "^3.7.4",
     "youch": "^2.0.10",
