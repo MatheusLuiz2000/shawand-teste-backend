@@ -1,3 +1,3 @@
 export default function(since) {
-  return `http://localhost:4040/users?since=${since}&per_page=3`;
+  return `${process.env.URL}users?since=${since}&per_page=3`;
 }
