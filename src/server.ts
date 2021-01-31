@@ -3,11 +3,10 @@ import app from './app';
 
 import pacote from '../package.json';
 
-const { NOME_SERVICO, PORT } = process.env;
+const { PORT } = process.env;
 
-app.listen(PORT, () => {
+app.listen(PORT || 4040, () => {
   console.info(
-    `** ${NOME_SERVICO} v${pacote.version} executando na porta ${PORT} **`
+    `** TEST v${pacote.version} executed in port ${PORT || 4040} **`
   );
 });
- 
