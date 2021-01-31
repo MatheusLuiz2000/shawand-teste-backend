@@ -1,6 +1,6 @@
 {
   "name": "fullstacktest",
-  "version": "1.0.35-0",
+  "version": "1.0.36-0",
   "description": "",
   "main": "server.js",
   "husky": {
@@ -15,7 +15,7 @@
     "pretest": "cross-env NODE_ENV=test",
     "test": " jest --forceExit --bail --runInBand",
     "posttest": "cross-env NODE_ENV=test sequelize db:migrate:undo:all ",
-    "start": " pm2-runtime start ./node_modules/sucrase/bin/sucrase-node --name api -- ./src/server.ts -i --watch "
+    "start": "node build/server.js"
   },
   "repository": {
     "type": "git",
